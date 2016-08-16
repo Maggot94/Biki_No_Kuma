@@ -25,42 +25,30 @@ public class EnemySpawner : MonoBehaviour {
 		end = true;
 		Noleada = 15; 
 		TimeEnemy = 10f;
-        TimeLeft = 10f; 
+        TimeLeft = 6f; 
 
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Delay (); 
+
 			if (end == true) {
 				TimeLeft -= Time.deltaTime;
 				if (TimeLeft < 0) {
 					Noleada = Noleada - 1;
-					TimeLeft = 3f; 
+					TimeLeft = 6f; 
 					end = false; 
 					if (Noleada >= 1 && end == false) {
 						switch (Noleada) {
 						case 14:
-							if (DeployEnemy == true) {
-								Instantiate (Enemy1Prefab, EnemySpawner1.position, EnemySpawner1.rotation);
-							}
-							if (DeployEnemy1 == true) {
-								Instantiate (Enemy2Prefab, EnemySpawner1.position, EnemySpawner1.rotation);
-
-							}
-							if (DeployEnemy2 == true) {
-								Instantiate (Enemy3Prefab, EnemySpawner1.position, EnemySpawner1.rotation);
-
-							}
-							if (DeployEnemy3 == true) {
-								Instantiate (Enemy4Prefab, EnemySpawner1.position, EnemySpawner1.rotation); 
-
-							}
-							if (DeployEnemy4 == true) {
-								end = false;
-
-							}
+							
+						Instantiate (Enemy1Prefab, EnemySpawner1.position, EnemySpawner1.rotation);
+						Instantiate (Enemy2Prefab, EnemySpawner1.position, EnemySpawner1.rotation);
+					     Instantiate (Enemy3Prefab, EnemySpawner1.position, EnemySpawner1.rotation);
+					     Instantiate (Enemy4Prefab, EnemySpawner1.position, EnemySpawner1.rotation);
+						end = true;
+							
 							break; 
 						case 13: 
 						
