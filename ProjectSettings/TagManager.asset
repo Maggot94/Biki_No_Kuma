@@ -8,6 +8,8 @@ TagManager:
   - p2
   - p3
   - p4
+  - ground
+  - Proyectil
   layers:
   - Default
   - TransparentFX

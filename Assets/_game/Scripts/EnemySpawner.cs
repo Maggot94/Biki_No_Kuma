@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class EnemySpawner : MonoBehaviour {
-
+  /*
 	public int Noleada = 15; 
 	public Transform EnemySpawner1 ; 
 	public GameObject Enemy1Prefab; 
@@ -18,21 +18,67 @@ public class EnemySpawner : MonoBehaviour {
 	public float TimeLeft = 10f; 
 	public float TimeEnemy = 10f;
 	public float Timeint = 10f; 
+  */
+	 
+	public int CurrentWave = 0 ; 
+	public int EnemyCounter = 0 ; 
+	public int TotalEnemySpawner = 0; 
+	public float Delay = 3f; 
+	public float DelayReload = 0f; 
+	public float WaveDelay = 0f; 
+	public float WaveDelayReload =0f; 
+	public Wave[] waves = new Wave[14];
 
 	// Use this for initialization
 	void Start () {
 
+		EnemyCounter = waves [CurrentWave].enemies.Length; 
+
+
+		/*
 		end = true;
 		Noleada = 15; 
 		TimeEnemy = 10f;
         TimeLeft = 6f; 
+        */
 
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (WaveDelay < 0 ){
+		
+			if (Delay < 0) {
+				
+				if (EnemyCounter != 0) {
+					Instantiate (waves [CurrentWave].enemies [TotalEnemySpawner], transform.position, transform.rotation); 
+					EnemyCounter --; 
+					Delay = DelayReload; 
+				 	TotalEnemySpawner ++; 
 
+
+				} else {
+
+					CurrentWave ++; 
+					EnemyCounter = waves [CurrentWave].enemies.Length; 
+					TotalEnemySpawner = 0; 
+					WaveDelay = WaveDelayReload;
+				}
+
+			} else {
+
+				Delay -= Time.deltaTime; 
+
+
+			}
+		}else{
+			WaveDelay -= Time.deltaTime; 
+		}
+
+
+
+		/*
 			if (end == true) {
 				TimeLeft -= Time.deltaTime;
 				if (TimeLeft < 0) {
@@ -194,9 +240,10 @@ public class EnemySpawner : MonoBehaviour {
 		DeployEnemy3 = false; 
 		DeployEnemy4 = false;
 			TimeEnemy = 10f; 
-	}
+	}*/
 
 	}
+	
 }
 
 
